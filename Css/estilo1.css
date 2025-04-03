@@ -1,0 +1,112 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+}
+
+body{
+    background-color: aliceblue;
+}
+
+ul{
+    display: flex;
+    list-style: none;
+    margin: 20px ;
+    gap:30px;
+    
+}
+
+li{
+ padding: 10px;
+}
+
+a{
+    color:black;
+    margin: 0px 7px 0px 7px;
+}
+
+li:hover{
+    background-color: darkslategray;
+    border-radius: 0.5rem;
+}
+header{
+    display: flex;
+    justify-content: space-between;
+    background-color: aliceblue;
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.3);
+    align-items: center;
+    margin-bottom: 20px;
+    padding: 15px;
+}
+
+.boton1{
+    border-radius: 2rem;
+    padding: 10px;
+}
+
+h1 {
+    margin: 0;
+    font-size: 1.5rem;
+}
+
+
+
+.display{
+    display: grid;
+    grid-auto-columns: repeat(au6, 1fr);
+    grid-auto-rows: repeat(3, 1fr);
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+    gap: 10px;
+}
+
+.titulo{
+    display: flex;
+    /* inicio fila, inicio columna , final fila, final columna*/
+    grid-area: 1 / 1 / 2 / 7;
+    height: 5rem;
+    justify-content: center;
+    align-items: center;
+    background-color: antiquewhite;
+    padding: 40px;
+
+}
+
+
+.productos{
+    /* inicio fila, inicio columna , final fila, final columna*/
+    grid-area:2/1/2/7 ;
+    background-color: #9feac9;
+    height: 3rem;
+    
+}
+
+.filtrar{
+    background-color: blue;
+    grid-area: 3/1/3/3;
+}
+
+.menu{
+    background-color: blueviolet;
+    grid-area: 3/3/3/7;
+    
+}
+
+
+input{
+    width: 50px;
+}
+
+.marco{
+    border: 1px solid black;
+}
+
+.precio{
+    border-bottom: 1px groove #B1B1B1;
+    padding: 5px;
+}
+
+.descuento{
+    border-bottom: 1px groove #B1B1B1;
+    padding: 5px;
+}
