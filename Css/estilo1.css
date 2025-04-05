@@ -12,12 +12,13 @@ ul{
     display: flex;
     list-style: none;
     margin: 20px ;
-    gap:30px;
+    gap:100px;
     
 }
 
 li{
  padding: 10px;
+ 
 }
 
 a{
@@ -25,10 +26,7 @@ a{
     margin: 0px 7px 0px 7px;
 }
 
-li:hover{
-    background-color: darkslategray;
-    border-radius: 0.5rem;
-}
+
 header{
     display: flex;
     justify-content: space-between;
@@ -51,9 +49,12 @@ h1 {
 
 
 
+/*Cuerpo de la pagina con secciones*/
+
+
 .display{
     display: grid;
-    grid-auto-columns: repeat(au6, 1fr);
+    grid-auto-columns: repeat(2, 1fr);
     grid-auto-rows: repeat(3, 1fr);
     grid-column-gap: 0px;
     grid-row-gap: 0px;
@@ -63,50 +64,77 @@ h1 {
 .titulo{
     display: flex;
     /* inicio fila, inicio columna , final fila, final columna*/
-    grid-area: 1 / 1 / 2 / 7;
-    height: 5rem;
+    grid-area: 1/1/1/3;
+    height: 10rem;
     justify-content: center;
     align-items: center;
-    background-color: antiquewhite;
+    background-image: url("../assets/ImagenBanner.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
     padding: 40px;
+
 
 }
 
 
 .productos{
     /* inicio fila, inicio columna , final fila, final columna*/
-    grid-area:2/1/2/7 ;
-    background-color: #9feac9;
-    height: 3rem;
+    grid-area: 2/1/2/3;
+    background-color: #e2f1ff;
+    height: 3rem; /* Asegura espacio suficiente */
+    display: flex; /* Para alinear contenido */
+    align-items: center; /* Centra verticalmente */
+    justify-content: center; /* Centra horizontalmente */
     
 }
 
 .filtrar{
     background-color: blue;
-    grid-area: 3/1/3/3;
+    /* inicio fila, inicio columna , final fila, final columna*/
+    grid-area: 3/1/3/2;
+   
 }
 
 .menu{
-    background-color: blueviolet;
-    grid-area: 3/3/3/7;
+    background-color: #edf4fa;
+    grid-area:3/2/3/3 ;
+   
     
 }
 
 
-input{
-    width: 50px;
+
+/*Estilo de iconos */
+
+
+
+.icono1{
+    width: 35px;
+    height: 35px;
 }
 
-.marco{
+
+.icono2{
+    width: 35px;
+    height: 35px;
+}
+
+.icono3{
+    width: 35px;
+    height: 35px;
+}
+
+
+
+/*estilo a los contenedores porductos guardados en la base de datos*/
+
+
+
+.producto{
+    background-color: cornsilk;
+    width: 200px;
+    height: 250px;
+    border-radius: .5rem;
     border: 1px solid black;
 }
 
-.precio{
-    border-bottom: 1px groove #B1B1B1;
-    padding: 5px;
-}
-
-.descuento{
-    border-bottom: 1px groove #B1B1B1;
-    padding: 5px;
-}

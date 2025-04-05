@@ -1,10 +1,16 @@
+
+<?php
+include('../../PhP/conexion.php');
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calculos</title>
-    <link rel="stylesheet" href="/Css/estilo1.css">
+    <link rel="stylesheet" href="../../Css/estilo1.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 
 <body>
@@ -29,14 +35,21 @@
        </div>
 
        <div class="productos">
-        <P>Aqui el menu de los productos</P>
+            
+            <div class="contenedoriconos">
+                <ul>
+                    <li><a href="#"><img src="../../assets/iconoCelular.png" alt="iconoCelular" class="icono1"></a></li>
+                    <li><a href="#"><img src="../../assets/ordenador-portatil.png" alt="iconoLaptop" class="icono2"></a></li>
+                    <li><a href="#"><img src="../../assets/ver-la-television.png" alt="iconoTelevision" class="icono3"></a></li>
+                </ul>
+            </div>
+            
        </div>
 
         <div class="filtrar">
             <div class="precio">
                 <label> Precio </label>
-                <input type="text" placeholder="Min">
-                <input type="text" placeholder="Max">
+                
             </div>
            
 
@@ -52,13 +65,10 @@
 
    </div>
 
-   
+   <script src="../../Js/carrito.js"></script>
 
 
 </body>
 </html>
-<script>
-    document.getElementById("boton").addEventListener("click",function(hola){
-    document.body.style.backgroundColor="lightblue";
-});
-</script>s
+
+
