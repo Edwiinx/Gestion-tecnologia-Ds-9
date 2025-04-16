@@ -3,7 +3,7 @@
 $host = "localhost";
 $user = "root";
 $password = "";
-$db = "pruebads9";
+$db = "NOID_BD";
 
 
 $est = mysqli_connect($host, $user, $password, $db);
