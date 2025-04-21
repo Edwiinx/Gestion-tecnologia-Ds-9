@@ -24,7 +24,7 @@ $(document).ready(function () {
         productosFiltrados.forEach(function (producto) {
             let contenedor = $('<div class="producto"></div>');
 
-            contenedor.append('<img class="imagen" src="../../assets/' + producto.IMAGEN + '" alt="Imagen del producto">');
+            contenedor.append('<img class="imagen" src="../../Assets/' + producto.IMAGEN + '" alt="Imagen del producto">');
             contenedor.append('<h3 class="tituloP">' + producto.NOMBRE_PRODUCTO + '/' + producto.MODELO + '</h3>');
             contenedor.append('<p class="precioP">$' + producto.PRECIO_UNITARIO + '</p>');
 
