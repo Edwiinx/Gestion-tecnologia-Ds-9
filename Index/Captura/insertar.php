@@ -20,18 +20,28 @@ $id_product ='';
     while($row=mysqli_fetch_assoc($sql_queryselect)){
         $id_product = $row['ID_PRODUCTO'];
     }
-    if($categoria==$id_product){
-        list($prefix, $number) = explode("-", $categoria);
-        $number = str_pad((int)$number + 1, 2, "0", STR_PAD_LEFT);
-        $categoria = $prefix . "-" . $number;
-    }
+    
 
-    $sql_insert = "INSERT INTO PRODUCTOS (ID_PRODUCTO, NOMBRE_PRODUCTO, MODELO, PRECIO_UNITARIO, DESCRIPCION, IMAGEN, NUMERO_DE_SERIE) VALUES ('$categoria', '$nombre','$modelo','$precio','$descripcion', '$imagen','$numbserie')";
+    $sql_insert = "INSERT INTO PRODUCTOS (
+    ID_CATEGORIA, NOMBRE_PRODUCTO, MODELO, PRECIO_UNITARIO, FECHA_DE_CAPTURA,
+    CANTIDAD, ESTADO, DESCRIPCION, IMAGEN, NUMERO_DE_SERIE
+) VALUES
+('$categoria', '$nombre', '$modelo', '$precio', NOW(), 100, 'DISPONIBLE', '$descripcion', '$imagen', '$numbserie')";
+
+
+   
 
     if (mysqli_query($est, $sql_insert)) {
-        echo "Producto insertado correctamente.";
+        
+        echo json_encode([
+        'status' => 'exito',
+        'mensaje_mostrar' => 'bueno',
+                ]);
     } else {
-        echo "Error al insertar producto: " . mysqli_error($est);
+        echo json_encode([
+            'status' => 'error',
+            'mensaje_mostrar' => 'no se envio capullo',
+                    ]);
     }
 
 

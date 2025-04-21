@@ -1,5 +1,14 @@
 <?php 
 
+session_start();
+
+
+if(!isset($_SESSION['user'])){
+    header('Location: ../Inicio/login.php');
+    exit;
+}else{
+
+}
 include('../../PhP/conexion.php');
 
 
@@ -69,7 +78,7 @@ include('../../PhP/conexion.php');
                                     while($row=mysqli_fetch_assoc($sql_query)){
                                         $id_categoria=$row["ID_CATEGORIA"];
                                         $nombre_categoria=$row["NOMBRE_CATEGORIA"];
-                                        echo "<option value='" . $id_categoria . "-01' selected>$nombre_categoria</option>";
+                                        echo "<option value='$id_categoria' selected>$nombre_categoria</option>";
                                     }
                                 ?>
                                 </select>
@@ -92,39 +101,77 @@ include('../../PhP/conexion.php');
 
 <script>
   
+  let btnsave = document.getElementById('savebtn');
+
+    btnsave.addEventListener('click', ()=>{
 
     let nombre = document.querySelector('.nombre').value;
     let precio = document.querySelector('.precio').value;
-    let imagen = document.querySelector('.imagen').value;
+    let imagen = document.querySelector('.imagen');
+    let imagendata = imagen.files[0];
+    let imaged2 = imagendata.name;
     let numbserie = document.querySelector('.numbserie').value;
     let descripcion = document.querySelector('.descripcion').value;
     let categoria = document.querySelector('.categoria').value;
     let modelo = document.querySelector('.modelo').value;
-    let btnsave = document.getElementById('savebtn');
-                            
+    let nombrevoid  = document.querySelector('.nombre');
+    let preciovoid = document.querySelector('.precio');
+    let numbserievoid = document.querySelector('.numbserie');
+    let descripcionvoid = document.querySelector('.descripcion');
+    let categoriavoid = document.querySelector('.categoria');
+    let modelovoid = document.querySelector('.modelo');
+    console.log(categoria);             
     let parametros ={
         'nombre':nombre, 
         'precio':precio,
-        'imagen':imagen,
+        'imagen':imaged2,
         'numbserie':numbserie,
         'descripcion':descripcion,
         'categoria':categoria,
         'modelo':modelo
     }
-    btnsave.addEventListener('click', ()=>{
-        $.ajax({
-        data:parametros,
-        url:('insertar.php'),
-        type:'post',
-
-        success: function(mensaje_mostrar){
+    $.ajax({
+    data: parametros,
+    url: 'insertar.php',
+    type: 'post',
+    dataType: 'json', 
+    success: function(respuesta) {
+        if (respuesta.status == 'exito') {
             Swal.fire({
-            title: "Bien Hecho",
-            text: "Todo se envio correctamente",
-            icon: "success"
+                title: "Bien Hecho",
+                text: "Todo se envío correctamente",
+                icon: "success"
             });
-			}
-        });
+
+            nombrevoid.value='';
+            preciovoid.value='';
+            numbserievoid.value='';
+            descripcionvoid.value='';
+            categoriavoid.value='';
+            modelovoid.value='';
+          
+
+        } else if (respuesta.status == 'error') {
+            Swal.fire({
+                title: "Error",
+                text: respuesta.mensaje_mostrar,
+                icon: "error"
+            });
+        }
+    },
+    error: function(xhr, status, error) {
+            Swal.fire({
+                title: "Error grave",
+                text: `Error: ${xhr.responseText || error}`,
+                icon: "error"
+            });
+            console.error("Detalles del error:", {
+                status: status,
+                error: error,
+                response: xhr.responseText
+            });
+        }
+    });
     });
    
                                 
