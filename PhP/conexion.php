@@ -1,14 +1,8 @@
 <?php
-//conexion a la base de datos pruebas
-
+// Conexion a la base de datos
 $host = "localhost";
 $username = "mario";
 $password = "12345678";
-$dbname = "proyecto9";
-
+$dbname = "noid_bd";
 
 $conn = mysqli_connect($host, $username, $password, $dbname);
-
-
-
-?>
