@@ -62,7 +62,7 @@ include('../../PhP/conexion.php');
                         <span class="textoIcono7">Componente</span>
                     </div>
                     <div class="contenedorIcono8">
-                        <li><a href="#"><img src="" alt="iconoCaja" class="icono8"></a></li>
+                        <li><a href="#"><img src="../../assets/caja_android.png" alt="iconoCaja" class="icono8"></a></li>
                         <span class="textoIcono8">Caja</span>
                     </div>
                 </ul>
