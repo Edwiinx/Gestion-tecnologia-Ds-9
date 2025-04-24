@@ -86,23 +86,23 @@ body{
     position: absolute;
     height: 20px;
     width: 20px;
-    transform: translate(2px,-1px);
+    transform: translate(2px,10px);
 }
 .form-container .image-lock{
     position: absolute;
     height: 20px;
     width: 20px;
-    transform: translate(2px, 47px);
+    transform: translate(2px, 60px);
 }
 
 .form-container .imagelogineyeopen{
     display: none;
     cursor: pointer;
-    transform: translate(225px,47px);
+    transform: translate(195px,60px);
 }
 
 .form-container .imagelogineyeclosed{
-    transform: translate(225px,47px);
+    transform: translate(195px,60px);
     cursor: pointer;
 
 }
@@ -111,22 +111,22 @@ body{
 
 .form-container .imageregisteruser{
    
-    transform: translate(2px,8px);
+    transform: translate(2px,10px);
 }
 
 .form-container .imageregisterlock{
    
-    transform: translate(2px,57px);
+    transform: translate(2px,60px);
 }
 
 .form-container .imageregistereyeopen{
     display: none;
     cursor: pointer;
-    transform: translate(225px,55px);
+    transform: translate(195px,60px);
 }
 
 .form-container .imageregistereyeclosed{
-    transform: translate(225px,55px);
+    transform: translate(195px,60px);
     cursor: pointer;
 
 }
