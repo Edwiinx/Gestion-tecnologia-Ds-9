@@ -1,12 +1,12 @@
 
 <?php 
-    session_start();
-    if(!isset($_SESSION['user'])){
-        header('Location: ../Inicio/login.php');
-        exit;
-    }else{
+  session_start();
+   if(!isset($_SESSION['user'])){
+   header('Location: ../Inicio/login.php');
+      exit;
+ }else{
 
-    }
+   }
 ?>
 <!DOCTYPE html>
 <html lang="en">

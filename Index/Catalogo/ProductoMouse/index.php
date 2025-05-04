@@ -38,8 +38,12 @@
           <div id="contenidoCarrito"></div>
         </div>
       </div>
+      
+      <script>
+    localStorage.setItem('ID_USUARIO', <?php echo json_encode($_SESSION['usuario']['ID_USUARIO']); ?>);
+</script>
 
 
-    <script src="../../../Js/carrito.js"></script>
+      <script src="../../../Js/Catalogo.js"></script>
 </body>
 </html>

@@ -1,32 +1,23 @@
 <?php
-// PhP/obtenerCarrito.php
-include("conexion.php");
-header('Content-Type: application/json');
+session_start();
 
-$idUsuario = isset($_GET['ID_USUARIO']) ? (int)$_GET['ID_USUARIO'] : 0;
-if ($idUsuario <= 0) {
-    http_response_code(400);
-    exit(json_encode([]));
+if (!isset($_SESSION['carrito']) || count($_SESSION['carrito']) == 0) {
+    echo "<p>Tu carrito está vacío.</p>";
+    exit;
 }
 
-$sql = "SELECT 
-            c.CANTIDAD,
-            c.TOTAL_PRECIO,
-            p.NOMBRE_PRODUCTO,
-            p.IMAGEN
-        FROM carrito c
-        JOIN productos p ON c.ID_PRODUCTO = p.ID_PRODUCTO
-        WHERE c.ID_USUARIO = ?";
-$stmt = $conn->prepare($sql);
-$stmt->bind_param("i", $idUsuario);
-$stmt->execute();
-$res = $stmt->get_result();
-
-$items = [];
-while ($row = $res->fetch_assoc()) {
-    $items[] = $row;
-}
-
-echo json_encode($items);
-$stmt->close();
-$conn->close();
+foreach ($_SESSION['carrito'] as $item):
+?>
+    <div class="producto-carrito" data-precio="<?= htmlspecialchars($item['TOTAL_PRECIO']) ?>">
+        <img src="<?= htmlspecialchars($item['IMAGEN_URL']) ?>" width="50">
+        <h4><?= htmlspecialchars($item['NOMBRE_PRODUCTO']) ?></h4>
+        <div>
+            <button class="disminuir" data-id="<?= $item['ID_PRODUCTO'] ?>">-</button>
+            <span class="cantidad"><?= htmlspecialchars($item['CANTIDAD']) ?></span>
+            <button class="aumentar" data-id="<?= $item['ID_PRODUCTO'] ?>">+</button>
+        </div>
+        <button class="eliminar" data-id="<?= $item['ID_PRODUCTO'] ?>">Eliminar</button>
+    </div>
+<?php
+endforeach;
+?>

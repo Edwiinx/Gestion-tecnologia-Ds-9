@@ -9,9 +9,6 @@ include('../../PhP/conexion.php');
 $username = $_POST['user'];
 $password = $_POST['password'];
 
-// Debug temporal
-// echo "<script>alert('Username: $username\\nPassword: $password');</script>";
-
 $type = '';
 $valido = false;
 
@@ -24,20 +21,38 @@ if ($est) {
         if ($password === $row['CONTRASENA']) {
             $type = $row['TIPO'];
             $valido = true;
+        
             $_SESSION['user'] = $username;
             $_SESSION['password'] = $password;
+            $_SESSION['ID_USUARIO'] = $row['ID_USUARIO'];  // guardamos el ID en sesión
+
+            $id_usuario = $row['ID_USUARIO']; // <--- define la variable para usarla abajo
+        
             header('Content-Type: application/json');
-            echo json_encode(["mensaje_mostrar" => "exito", "type" => $type, "username"=>$username, "password"=>$password]);
+            echo json_encode([
+                "mensaje_mostrar" => "exito",
+                "type" => $type,
+                "ID_USUARIO" => $row['ID_USUARIO']
+            ]);
         } else {
             header('Content-Type: application/json');
-            echo json_encode(["status" => 'error', "mensaje" => "Usuario o contraseña incorrecta"]);
+            echo json_encode([
+                "status" => 'error',
+                "mensaje" => "Usuario o contraseña incorrecta"
+            ]);
         }
     } else {
         header('Content-Type: application/json');
-        echo json_encode(["status" => 'error', "mensaje" => "El usuario no existe"]);
+        echo json_encode([
+            "status" => 'error',
+            "mensaje" => "El usuario no existe"
+        ]);
     }
 } else {
     header('Content-Type: application/json');
-    echo json_encode(["status" => 'error', "mensaje" => "No hay conexión"]);
+    echo json_encode([
+        "status" => 'error',
+        "mensaje" => "No hay conexión"
+    ]);
 }
 ?>

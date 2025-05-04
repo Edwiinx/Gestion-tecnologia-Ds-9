@@ -30,16 +30,10 @@
         </div>
         
     </div>
+    <script>
+    localStorage.setItem('ID_USUARIO', <?php echo json_encode($_SESSION['usuario']['ID_USUARIO']); ?>);
+</script>
 
-    <div id="modalCarrito" class="modal" style="display:none;">
-        <div class="modal-content">
-          <span class="close" onclick="cerrarModalCarrito()">&times;</span>
-          <h2>Tu Carrito</h2>
-          <div id="contenidoCarrito"></div>
-        </div>
-      </div>
-
-
-    <script src="../../../Js/carrito.js"></script>
+    <script src="../../../Js/Catalogo.js"></script>
 </body>
 </html>

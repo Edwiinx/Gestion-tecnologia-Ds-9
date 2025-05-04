@@ -2,7 +2,6 @@ $(document).ready(function () {
     let todosLosProductos = [];
     let productoSeleccionado = null;
 
-
     $.ajax({
         url: '../../PhP/consultacarrito.php',
         method: 'GET',
@@ -12,6 +11,8 @@ $(document).ready(function () {
             mostrarProductos(todosLosProductos);
         }
     });
+
+    
 
     function mostrarProductos(productosFiltrados) {
         $('.menu').empty();
@@ -34,14 +35,14 @@ $(document).ready(function () {
                 let ruta = '';
 
                 switch (categoria) {
-                    case 'PC': ruta = `../../Index/Carrito/ProductoPc/index.html?nombre=${nombreFormateado}`; break;
-                    case 'LAP': ruta = `../../Index/Carrito/ProductoLap/index.html?nombre=${nombreFormateado}`; break;
-                    case 'MOU': ruta = `../../Index/Carrito/ProductoMouse/index.html?nombre=${nombreFormateado}`; break;
-                    case 'MON': ruta = `../../Index/Carrito/ProductoMonitor/index.html?nombre=${nombreFormateado}`; break;
-                    case 'KEY': ruta = `../../Index/Carrito/ProductoTeclado/index.html?nombre=${nombreFormateado}`; break;
-                    case 'SPE': ruta = `../../Index/Carrito/ProductoParlante/index.html?nombre=${nombreFormateado}`; break;
-                    case 'COM': ruta = `../../Index/Carrito/ProductoComponente/index.html?nombre=${nombreFormateado}`; break;
-                    case 'CAS': ruta = `../../Index/Carrito/ProductoCase/index.html?nombre=${nombreFormateado}`; break;
+                    case 'PC': ruta = `../../Index/Catalogo/ProductoPc/index.php?nombre=${nombreFormateado}`; break;
+                    case 'LAP': ruta = `../../Index/Catalogo/ProductoLap/index.php?nombre=${nombreFormateado}`; break;
+                    case 'MOU': ruta = `../../Index/Catalogo/ProductoMouse/index.php?nombre=${nombreFormateado}`; break;
+                    case 'MON': ruta = `../../Index/Catalogo/ProductoMonitor/index.php?nombre=${nombreFormateado}`; break;
+                    case 'KEY': ruta = `../../Index/Catalogo/ProductoTeclado/index.php?nombre=${nombreFormateado}`; break;
+                    case 'SPE': ruta = `../../Index/Catalogo/ProductoParlante/index.php?nombre=${nombreFormateado}`; break;
+                    case 'COM': ruta = `../../Index/Catalogo/ProductoComponente/index.php?nombre=${nombreFormateado}`; break;
+                    case 'CAS': ruta = `../../Index/Catalogo/ProductoCase/index.php?nombre=${nombreFormateado}`; break;
                 }
 
                 localStorage.setItem('productoDetalle', JSON.stringify(producto));
@@ -52,7 +53,6 @@ $(document).ready(function () {
         });
     }
 
-  
     $(document).on('click', '.iconoCarrito', function () {
         $.ajax({
             url: '../../PhP/obtenerCarrito.php',
@@ -75,17 +75,16 @@ $(document).ready(function () {
                 }
 
                 $('#contenidoCarrito').html(html);
-                $('#modalCarrito').fadeIn();  
+                $('#modalCarrito').fadeIn();
             }
         });
     });
 
     // Cerrar modal
     $('#cerrarModalCarrito').click(function () {
-        $('#modalCarrito').fadeOut();  
+        $('#modalCarrito').fadeOut();
     });
 
-    
     $(window).click(function (event) {
         if ($(event.target).is('#modalCarrito')) {
             $('#modalCarrito').fadeOut();
@@ -125,7 +124,7 @@ $(document).ready(function () {
         }
 
         // Agregar al carrito
-        $('#btnAgregarCarrito').click(function () {
+        $('#btnAgregarCarrito').off('click').on('click', function () {
             const idUsuario = localStorage.getItem('ID_USUARIO');
             console.log("ID_USUARIO enviado:", idUsuario);  // Verificar el valor en consola
 
@@ -135,11 +134,16 @@ $(document).ready(function () {
             }
 
             const cantidad = parseInt($('#quantity').val()) || 1;
+            if(cantidad <= 0) {
+                alert("La cantidad debe ser mayor a 0.");
+                return;
+            }
+
             const precio = parseFloat(producto.PRECIO_UNITARIO);
             const total = (cantidad * precio).toFixed(2);
 
             $.ajax({
-                url: '../../../PhP/agregarAlCarrito.php',
+                url: '/Gestion-tecnologia-Ds-9/PhP/agregarCarrito.php',
                 method: 'POST',
                 data: {
                     ID_USUARIO: idUsuario,
@@ -148,8 +152,13 @@ $(document).ready(function () {
                     TOTAL_PRECIO: total
                 },
                 success: function (response) {
+                    // Aquí podrías manejar si el producto ya estaba en el carrito y actualizar cantidad
                     alert('Producto agregado al carrito.');
                     console.log(response);
+                    // Opcional: actualizar el modal carrito si está abierto
+                    if($('#modalCarrito').is(':visible')) {
+                        $('.iconoCarrito').click(); // recargar contenido del carrito
+                    }
                 },
                 error: function (xhr, status, error) {
                     alert('Error al agregar al carrito.');
@@ -170,8 +179,7 @@ $(document).ready(function () {
         $('#quantity').val(value + 1);
     }
 
-
     window.volverP = function () {
-        window.location.href = "../carrito.php";
+        window.location.href = "../Catalogo/Catalogo.php";
     }
 });
