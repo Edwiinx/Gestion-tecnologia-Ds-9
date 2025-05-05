@@ -80,7 +80,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['id_producto'])) {
 
    <div class="container">
         <header>
-            <h1>Tienda tecnológica</h1>
+            <h1>NOID</h1>
             <nav class="navegador">
                 
             <ul>
@@ -227,11 +227,9 @@ $(document).ready(function() {
 });
 </script>
 
-<script>
-localStorage.setItem('ID_USUARIO', <?php echo json_encode($_SESSION['user']); ?>);
-</script>
-
-    <script src="../../Js/Catalogo.js"></script>
+<script>localStorage.setItem('ID_USUARIO', <?php echo json_encode($_SESSION['user']); ?>);</script>
+<script src="../../Js/Catalogo.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 </body>
 </html>

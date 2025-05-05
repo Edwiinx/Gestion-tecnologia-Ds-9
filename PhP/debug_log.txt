@@ -1,0 +1,146 @@
+[2025-05-05 08:52:52] POST recibido: numero_visa=, fecha=, cvv=123
+[2025-05-05 08:52:52] Fecha inválida: 
+[2025-05-05 09:10:55] POST recibido: numero_visa=, fecha=, cvv=123
+[2025-05-05 09:10:55] Fecha inválida: 
+[2025-05-05 09:13:28] POST recibido: numero_visa=, fecha=, cvv=123
+[2025-05-05 09:13:28] Fecha inválida: 
+[2025-05-05 09:20:29] POST recibido: numero_visa=, fecha=, cvv=123
+[2025-05-05 09:20:29] Fecha inválida: 
+[2025-05-05 09:23:39] POST recibido: numero_visa=4111111111111111, fecha=10/27, cvv=123
+[2025-05-05 09:24:18] POST recibido: numero_visa=4111111111111111, fecha=10/27, cvv=123
+[2025-05-05 09:28:00] POST recibido: numero_visa=4111111111111111, fecha=10/27, cvv=123
+[2025-05-05 09:29:41] POST recibido: numero_visa=4111111111111111, fecha=10/27, cvv=123
+[2025-05-05 09:32:51] POST recibido: numero_visa=4111111111111111, fecha=10/27, cvv=123
+[2025-05-05 09:33:03] POST recibido: numero_visa=4111111111111111, fecha=10/27, cvv=123
+[2025-05-05 09:37:52] POST recibido: numero_visa=4111111111111111, fecha=10/27, cvv=123
+[2025-05-05 09:45:14] POST recibido: numero_visa=4111111111111111, fecha=10/27, cvv=123
+[2025-05-05 09:45:44] POST recibido: numero_visa=4111111111111111, fecha=10/27, cvv=123
+[2025-05-05 09:53:15] POST recibido: numero_visa=4111111111111111, fecha=10/27, cvv=123
+[2025-05-05 09:55:13] POST recibido: numero_visa=4111111111111111, fecha=10/27, cvv=123
+[2025-05-05 09:55:13] Total con IVA calculado: 145.52
+[2025-05-05 09:55:13] Saldo disponible: 1000
+[2025-05-05 09:55:13] Excepción: Cannot add or update a child row: a foreign key constraint fails (`noid_bd`.`recibo`, CONSTRAINT `recibo_ibfk_2` FOREIGN KEY (`ID_CARRITO`) REFERENCES `carrito` (`ID_CARRITO`) ON DELETE CASCADE)
+[2025-05-05 09:55:19] POST recibido: numero_visa=4111111111111111, fecha=10/27, cvv=123
+[2025-05-05 09:55:19] Total con IVA calculado: 145.52
+[2025-05-05 09:55:19] Saldo disponible: 1000
+[2025-05-05 09:55:19] Excepción: Cannot add or update a child row: a foreign key constraint fails (`noid_bd`.`recibo`, CONSTRAINT `recibo_ibfk_2` FOREIGN KEY (`ID_CARRITO`) REFERENCES `carrito` (`ID_CARRITO`) ON DELETE CASCADE)
+[2025-05-05 09:55:31] POST recibido: numero_visa=4111111111111111, fecha=10/27, cvv=123
+[2025-05-05 09:55:31] Total con IVA calculado: 145.52
+[2025-05-05 09:55:31] Saldo disponible: 1000
+[2025-05-05 09:55:31] Excepción: Cannot add or update a child row: a foreign key constraint fails (`noid_bd`.`recibo`, CONSTRAINT `recibo_ibfk_2` FOREIGN KEY (`ID_CARRITO`) REFERENCES `carrito` (`ID_CARRITO`) ON DELETE CASCADE)
+[2025-05-05 09:55:58] POST recibido: numero_visa=4111111111111111, fecha=10/27, cvv=123
+[2025-05-05 09:55:58] Total con IVA calculado: 145.52
+[2025-05-05 09:55:58] Saldo disponible: 1000
+[2025-05-05 09:55:58] Excepción: Cannot add or update a child row: a foreign key constraint fails (`noid_bd`.`recibo`, CONSTRAINT `recibo_ibfk_2` FOREIGN KEY (`ID_CARRITO`) REFERENCES `carrito` (`ID_CARRITO`) ON DELETE CASCADE)
+[2025-05-05 09:56:00] POST recibido: numero_visa=4111111111111111, fecha=10/27, cvv=123
+[2025-05-05 09:56:00] Total con IVA calculado: 145.52
+[2025-05-05 09:56:00] Saldo disponible: 1000
+[2025-05-05 09:56:00] Excepción: Cannot add or update a child row: a foreign key constraint fails (`noid_bd`.`recibo`, CONSTRAINT `recibo_ibfk_2` FOREIGN KEY (`ID_CARRITO`) REFERENCES `carrito` (`ID_CARRITO`) ON DELETE CASCADE)
+[2025-05-05 09:57:03] POST recibido: numero_visa=4111111111111111, fecha=10/27, cvv=123
+[2025-05-05 09:57:03] Total con IVA calculado: 145.52
+[2025-05-05 09:57:03] Saldo disponible: 1000
+[2025-05-05 09:57:03] Excepción: Cannot add or update a child row: a foreign key constraint fails (`noid_bd`.`recibo`, CONSTRAINT `recibo_ibfk_2` FOREIGN KEY (`ID_CARRITO`) REFERENCES `carrito` (`ID_CARRITO`) ON DELETE CASCADE)
+[2025-05-05 09:58:00] POST recibido: numero_visa=4111111111111111, fecha=10/27, cvv=123
+[2025-05-05 09:58:00] Total con IVA calculado: 145.52
+[2025-05-05 09:58:00] Saldo disponible: 1000
+[2025-05-05 09:58:00] Excepción: Cannot add or update a child row: a foreign key constraint fails (`noid_bd`.`recibo`, CONSTRAINT `recibo_ibfk_2` FOREIGN KEY (`ID_CARRITO`) REFERENCES `carrito` (`ID_CARRITO`) ON DELETE CASCADE)
+[2025-05-05 09:58:13] POST recibido: numero_visa=4111111111111111, fecha=10/27, cvv=123
+[2025-05-05 09:58:13] Total con IVA calculado: 145.52
+[2025-05-05 09:58:13] Saldo disponible: 1000
+[2025-05-05 09:58:13] Excepción: Cannot add or update a child row: a foreign key constraint fails (`noid_bd`.`recibo`, CONSTRAINT `recibo_ibfk_2` FOREIGN KEY (`ID_CARRITO`) REFERENCES `carrito` (`ID_CARRITO`) ON DELETE CASCADE)
+[2025-05-05 10:02:40] POST recibido: numero_visa=4111111111111111, fecha=10/27, cvv=123
+[2025-05-05 10:02:40] Total con IVA calculado: 145.52
+[2025-05-05 10:02:40] Saldo disponible: 1000
+[2025-05-05 10:02:40] Excepción: Cannot add or update a child row: a foreign key constraint fails (`noid_bd`.`recibo`, CONSTRAINT `recibo_ibfk_2` FOREIGN KEY (`ID_CARRITO`) REFERENCES `carrito` (`ID_CARRITO`) ON DELETE CASCADE)
+[2025-05-05 10:03:14] POST recibido: numero_visa=4111111111111111, fecha=10/27, cvv=123
+[2025-05-05 10:03:14] Total con IVA calculado: 145.52
+[2025-05-05 10:03:14] Saldo disponible: 1000
+[2025-05-05 10:03:14] Excepción: Cannot add or update a child row: a foreign key constraint fails (`noid_bd`.`recibo`, CONSTRAINT `recibo_ibfk_2` FOREIGN KEY (`ID_CARRITO`) REFERENCES `carrito` (`ID_CARRITO`) ON DELETE CASCADE)
+[2025-05-05 10:04:19] POST recibido: numero_visa=4111111111111111, fecha=10/27, cvv=123
+[2025-05-05 10:04:19] Total con IVA calculado: 145.52
+[2025-05-05 10:04:19] Saldo disponible: 1000
+[2025-05-05 10:04:19] Excepción: Cannot add or update a child row: a foreign key constraint fails (`noid_bd`.`recibo`, CONSTRAINT `recibo_ibfk_2` FOREIGN KEY (`ID_CARRITO`) REFERENCES `carrito` (`ID_CARRITO`) ON DELETE CASCADE)
+[2025-05-05 10:04:28] POST recibido: numero_visa=4111111111111111, fecha=10/27, cvv=123
+[2025-05-05 10:04:28] Total con IVA calculado: 145.52
+[2025-05-05 10:04:28] Saldo disponible: 1000
+[2025-05-05 10:04:29] Excepción: Cannot add or update a child row: a foreign key constraint fails (`noid_bd`.`recibo`, CONSTRAINT `recibo_ibfk_2` FOREIGN KEY (`ID_CARRITO`) REFERENCES `carrito` (`ID_CARRITO`) ON DELETE CASCADE)
+[2025-05-05 10:05:08] POST recibido: numero_visa=4111111111111111, fecha=10/27, cvv=123
+[2025-05-05 10:05:08] Total con IVA calculado: 145.52
+[2025-05-05 10:05:08] Saldo disponible: 1000
+[2025-05-05 10:05:08] Excepción: Cannot add or update a child row: a foreign key constraint fails (`noid_bd`.`recibo`, CONSTRAINT `recibo_ibfk_2` FOREIGN KEY (`ID_CARRITO`) REFERENCES `carrito` (`ID_CARRITO`) ON DELETE CASCADE)
+[2025-05-05 10:06:03] POST recibido: numero_visa=4111111111111111, fecha=10/27, cvv=123
+[2025-05-05 10:06:03] Total con IVA calculado: 145.52
+[2025-05-05 10:06:03] Saldo disponible: 1000
+[2025-05-05 10:06:03] Excepción: Cannot add or update a child row: a foreign key constraint fails (`noid_bd`.`recibo`, CONSTRAINT `recibo_ibfk_2` FOREIGN KEY (`ID_CARRITO`) REFERENCES `carrito` (`ID_CARRITO`) ON DELETE CASCADE)
+[2025-05-05 10:37:08] POST recibido: numero_visa=4111111111111111, fecha=10/27, cvv=123
+[2025-05-05 10:37:08] Total con IVA calculado: 243.96
+[2025-05-05 10:37:08] Saldo disponible: 1000
+[2025-05-05 10:37:08] Excepción: Unknown column 'ID_CARRITO' in 'field list'
+[2025-05-05 10:40:33] POST recibido: numero_visa=4111111111111111, fecha=10/27, cvv=123
+[2025-05-05 10:40:33] Total con IVA calculado: 243.96
+[2025-05-05 10:40:33] Saldo disponible: 1000
+[2025-05-05 10:40:33] Excepción: Unknown column 'ID_CARRITO' in 'field list'
+[2025-05-05 10:42:15] POST recibido: numero_visa=4111111111111111, fecha=10/27, cvv=123
+[2025-05-05 10:42:15] Total con IVA calculado: 243.96
+[2025-05-05 10:42:15] Saldo disponible: 1000
+[2025-05-05 10:42:15] Compra completada con éxito. ID compra: 7
+[2025-05-05 10:43:47] POST recibido: numero_visa=4111111111111111, fecha=10/27, cvv=123
+[2025-05-05 10:43:47] Total con IVA calculado: 2296.1986
+[2025-05-05 10:43:47] Saldo disponible: 756.04
+[2025-05-05 10:43:47] Fondos insuficientes. Disponible: 756.04, Requerido: 2296.1986
+[2025-05-05 10:46:06] POST recibido: numero_visa=4111111111111111, fecha=10/27, cvv=123
+[2025-05-05 10:46:06] Total con IVA calculado: 49.2093
+[2025-05-05 10:46:06] Saldo disponible: 1000
+[2025-05-05 10:46:06] Compra completada con éxito. ID compra: 8
+[2025-05-05 10:47:45] POST recibido: numero_visa=4111111111111111, fecha=10/27, cvv=123
+[2025-05-05 10:47:45] Total con IVA calculado: 149.8
+[2025-05-05 10:47:45] Saldo disponible: 950.79
+[2025-05-05 10:47:45] Compra completada con éxito. ID compra: 9
+[2025-05-05 10:49:19] POST recibido: numero_visa=4111111111111111, fecha=10/27, cvv=123
+[2025-05-05 10:49:19] Total con IVA calculado: 74.9
+[2025-05-05 10:49:19] Saldo disponible: 800.99
+[2025-05-05 10:49:19] Compra completada con éxito. ID compra: 10
+[2025-05-05 10:53:10] POST recibido: numero_visa=4111111111111111, fecha=10/27, cvv=123
+[2025-05-05 10:53:10] Total con IVA calculado: 37.45
+[2025-05-05 10:53:10] Saldo disponible: 726.09
+[2025-05-05 10:53:10] Compra completada con éxito. ID compra: 11
+[2025-05-05 10:55:37] POST recibido: numero_visa=4111111111111111, fecha=10/27, cvv=123
+[2025-05-05 10:55:37] Total con IVA calculado: 37.45
+[2025-05-05 10:55:37] Saldo disponible: 688.64
+[2025-05-05 10:55:37] Compra completada con éxito. ID compra: 12
+[2025-05-05 10:56:09] POST recibido: numero_visa=4111111111111111, fecha=10/27, cvv=123
+[2025-05-05 10:56:09] Total con IVA calculado: 49.2093
+[2025-05-05 10:56:09] Saldo disponible: 651.19
+[2025-05-05 10:56:09] Compra completada con éxito. ID compra: 13
+[2025-05-05 11:02:29] POST recibido: numero_visa=4111111111111111, fecha=10/27, cvv=123
+[2025-05-05 11:02:29] Total con IVA calculado: 963
+[2025-05-05 11:02:29] Saldo disponible: 1000
+[2025-05-05 11:02:29] Compra completada con éxito. ID compra: 5
+[2025-05-05 11:10:41] POST recibido: numero_visa=4111111111111111, fecha=10/27, cvv=123
+[2025-05-05 11:10:41] Total con IVA calculado: 37.45
+[2025-05-05 11:10:41] Saldo disponible: 37
+[2025-05-05 11:10:41] Fondos insuficientes. Disponible: 37, Requerido: 37.45
+[2025-05-05 11:11:21] POST recibido: numero_visa=4111111111111111, fecha=10/27, cvv=123
+[2025-05-05 11:11:21] Total con IVA calculado: 37.45
+[2025-05-05 11:11:21] Saldo disponible: 1000
+[2025-05-05 11:11:21] Compra completada con éxito. ID compra: 6
+[2025-05-05 11:16:31] POST recibido: numero_visa=4111111111111111, fecha=10/27, cvv=123
+[2025-05-05 11:16:31] Total con IVA calculado: 37.45
+[2025-05-05 11:16:31] Saldo disponible: 962.55
+[2025-05-05 11:16:31] Compra completada con éxito. ID compra: 7
+[2025-05-05 11:22:57] POST recibido: numero_visa=4111111111111111, fecha=10/27, cvv=123
+[2025-05-05 11:22:57] Total con IVA calculado: 37.45
+[2025-05-05 11:22:57] Saldo disponible: 925.1
+[2025-05-05 11:22:57] Compra completada con éxito. ID compra: 8
+[2025-05-05 11:24:10] POST recibido: numero_visa=4111111111111111, fecha=10/27, cvv=123
+[2025-05-05 11:24:10] Total con IVA calculado: 37.45
+[2025-05-05 11:24:10] Saldo disponible: 887.65
+[2025-05-05 11:24:10] Compra completada con éxito. ID compra: 9
+[2025-05-05 11:24:44] POST recibido: numero_visa=4111111111111111, fecha=10/27, cvv=123
+[2025-05-05 11:24:44] Total con IVA calculado: 37.45
+[2025-05-05 11:24:44] Saldo disponible: 850.2
+[2025-05-05 11:24:44] Compra completada con éxito. ID compra: 10
+[2025-05-05 11:25:46] POST recibido: numero_visa=4111111111111111, fecha=10/27, cvv=123
+[2025-05-05 11:25:46] Total con IVA calculado: 37.45
+[2025-05-05 11:25:46] Saldo disponible: 812.75
+[2025-05-05 11:25:46] Compra completada con éxito. ID compra: 11
