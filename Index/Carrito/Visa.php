@@ -62,7 +62,7 @@ $conn->close();
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>Carrito y Pago</title>
+  <title>Carrito</title>
   <link rel="stylesheet" href="../../Css/DesignVisa.css">
       <link rel="stylesheet" href="../../Css/estiloProducto.css"> <!-- Enlace al CSS -->
 
