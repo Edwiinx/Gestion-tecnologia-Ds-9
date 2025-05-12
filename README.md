@@ -75,6 +75,22 @@ Una vez realizados todos los pasos, accede a la aplicación desde tu navegador c
 http://localhost/Gestion-tecnologia-Ds-9/Index/inicio/login.php
 ```
 
+
+CREDENCIALES PARA ACCEDER SEGUN TIPO(ADMINISTRADOR - COMPRADOR)
+
+### Tabla de Usuarios Insertados
+
+| NOMBRE_USUARIO | CONTRASENA   | TIPO           |
+|----------------|--------------|----------------|
+| Josue          | admin123     | ADMINISTRADOR  |
+| Edwin          | clave456     | ADMINISTRADOR  |
+| Maria          | pass789      | ADMINISTRADOR  |
+| Mario          | admin987     | ADMINISTRADOR  |
+| Ana            | comprador1   | COMPRADOR      |
+| Luis           | comprador2   | COMPRADOR      |
+| Carolina       | comprador3   | COMPRADOR      |
+| Pedro          | comprador4   | COMPRADOR      |
+
 ---
 
  Funcionalidades principales del sistema
