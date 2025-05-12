@@ -153,3 +153,21 @@ body{
 .form-container .savebtn:hover{
     background-color: #8c40bf;
 }
+
+
+.btn-regresar {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    background-color: #f0f0f0;
+    padding: 10px 15px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: bold;
+    color: #333;
+    z-index: 999;
+}
+
+.btn-regresar:hover {
+    background-color: #b82eca;
+}

@@ -144,3 +144,80 @@
 [2025-05-05 11:25:46] Total con IVA calculado: 37.45
 [2025-05-05 11:25:46] Saldo disponible: 812.75
 [2025-05-05 11:25:46] Compra completada con éxito. ID compra: 11
+[2025-05-05 11:31:10] POST recibido: numero_visa=4111111111111111, fecha=10/27, cvv=123
+[2025-05-05 11:31:10] Total con IVA calculado: 97.37
+[2025-05-05 11:31:10] Saldo disponible: 775.3
+[2025-05-05 11:31:10] Compra completada con éxito. ID compra: 12
+[2025-05-05 11:31:41] POST recibido: numero_visa=4111111111111111, fecha=10/27, cvv=123
+[2025-05-05 11:31:41] Total con IVA calculado: 97.37
+[2025-05-05 11:31:41] Saldo disponible: 677.93
+[2025-05-05 11:31:41] Compra completada con éxito. ID compra: 13
+[2025-05-05 11:33:43] POST recibido: numero_visa=4111111111111111, fecha=10/27, cvv=123
+[2025-05-05 11:33:43] Total con IVA calculado: 146.59
+[2025-05-05 11:33:43] Saldo disponible: 580.56
+[2025-05-05 11:33:43] Compra completada con éxito. ID compra: 14
+[2025-05-05 11:34:41] POST recibido: numero_visa=4111111111111111, fecha=10/27, cvv=123
+[2025-05-05 11:34:41] Total con IVA calculado: 37.45
+[2025-05-05 11:34:41] Saldo disponible: 433.97
+[2025-05-05 11:34:41] Compra completada con éxito. ID compra: 15
+[2025-05-05 11:37:45] POST recibido: numero_visa=4111111111111111, fecha=10/27, cvv=123
+[2025-05-05 11:37:45] Total con IVA calculado: 97.37
+[2025-05-05 11:37:45] Saldo disponible: 396.52
+[2025-05-05 11:37:45] Compra completada con éxito. ID compra: 16
+[2025-05-05 11:44:51] POST recibido: numero_visa=4111111111111111, fecha=10/27, cvv=123
+[2025-05-05 11:48:15] POST recibido: numero_visa=4111111111111111, fecha=10/27, cvv=123, total=97.37
+[2025-05-05 11:48:15] Saldo disponible: 299.15
+[2025-05-05 11:48:15] Compra completada con éxito. ID compra: 17
+[2025-05-05 11:48:46] POST recibido: numero_visa=4111111111111111, fecha=10/27, cvv=123, total=112.35
+[2025-05-05 11:48:46] Saldo disponible: 201.78
+[2025-05-05 11:48:46] Compra completada con éxito. ID compra: 18
+[2025-05-05 20:23:30] POST recibido: numero_visa=4111111111111111, fecha=05/27, cvv=131, total=23.54
+[2025-05-05 20:23:30] Tarjeta no válida: 4111111111111111
+[2025-05-05 20:23:43] POST recibido: numero_visa=4111111111111111, fecha=10/27, cvv=123, total=23.54
+[2025-05-05 20:23:43] Saldo disponible: 1000
+[2025-05-05 20:23:43] Compra completada con éxito. ID compra: 19
+[2025-05-05 22:40:45] POST recibido: numero_visa=4111111111111111, fecha=10/27, cvv=123, total=49.04
+[2025-05-05 22:40:45] Saldo disponible: 976.46
+[2025-05-05 22:40:45] Compra completada con éxito. ID compra: 20
+[2025-05-05 22:49:00] POST recibido: numero_visa=4111111111111111, fecha=10/27, cvv=123, total=133.75
+[2025-05-05 22:49:00] Saldo disponible: 927.42
+[2025-05-05 22:49:00] Compra completada con éxito. ID compra: 21
+[2025-05-11 12:35:35] POST recibido: numero_visa=4111111111111111, fecha=10/27, cvv=123, total=98.42
+[2025-05-11 12:35:35] Saldo disponible: 1000
+[2025-05-11 12:35:35] Compra completada con éxito. ID compra: 5
+[2025-05-12 05:32:45] POST recibido: numero_visa=4111111111111111, fecha=10/27, cvv=123, total=857.06
+[2025-05-12 05:32:45] Saldo disponible: 61.08
+[2025-05-12 05:32:45] Fondos insuficientes. Disponible: 61.08, Requerido: 857.06
+[2025-05-12 05:32:47] POST recibido: numero_visa=4111111111111111, fecha=10/27, cvv=123, total=857.06
+[2025-05-12 05:32:47] Saldo disponible: 61.08
+[2025-05-12 05:32:47] Fondos insuficientes. Disponible: 61.08, Requerido: 857.06
+[2025-05-12 05:33:23] POST recibido: numero_visa=4111111111111111, fecha=10/27, cvv=123, total=857.06
+[2025-05-12 05:33:23] Saldo disponible: 1000
+[2025-05-12 05:33:23] Compra completada con éxito. ID compra: 32
+[2025-05-12 11:47:39] POST recibido: numero_visa=4111111111111111, fecha=10/27, cvv=123, total=86.66
+[2025-05-12 11:47:39] Saldo disponible: 1000
+[2025-05-12 11:47:39] Compra completada con éxito. ID compra: 5
+[2025-05-12 12:05:06] POST recibido: numero_visa=4111111111111111, fecha=10/27, cvv=123, total=49.21
+[2025-05-12 12:05:06] Saldo disponible: 913.34
+[2025-05-12 12:05:06] Compra completada con éxito. ID compra: 6
+[2025-05-12 12:08:15] POST recibido: numero_visa=4111111111111111, fecha=10/27, cvv=123, total=49.21
+[2025-05-12 12:08:15] Saldo disponible: 864.13
+[2025-05-12 12:08:15] Compra completada con éxito. ID compra: 7
+[2025-05-12 12:09:59] POST recibido: numero_visa=4111111111111111, fecha=10/27, cvv=123, total=49.21
+[2025-05-12 12:09:59] Saldo disponible: 814.92
+[2025-05-12 12:09:59] Compra completada con éxito. ID compra: 8
+[2025-05-12 12:17:50] POST recibido: numero_visa=4111111111111111, fecha=10/27, cvv=123, total=98.42
+[2025-05-12 12:17:50] Saldo disponible: 765.71
+[2025-05-12 12:17:50] Excepción: Table 'noid_bd.producto' doesn't exist
+[2025-05-12 12:18:52] POST recibido: numero_visa=4111111111111111, fecha=10/27, cvv=123, total=98.42
+[2025-05-12 12:18:52] Saldo disponible: 765.71
+[2025-05-12 12:18:52] Excepción: Unknown column 'P.NOMBRE' in 'field list'
+[2025-05-12 12:20:02] POST recibido: numero_visa=4111111111111111, fecha=10/27, cvv=123, total=98.42
+[2025-05-12 12:20:02] Saldo disponible: 765.71
+[2025-05-12 12:20:02] Compra completada con éxito. ID compra: 11
+[2025-05-12 12:20:15] POST recibido: numero_visa=4111111111111111, fecha=10/27, cvv=123, total=98.42
+[2025-05-12 12:20:15] Saldo disponible: 667.29
+[2025-05-12 12:20:15] Compra completada con éxito. ID compra: 12
+[2025-05-12 12:21:20] POST recibido: numero_visa=4111111111111111, fecha=10/27, cvv=123, total=49.21
+[2025-05-12 12:21:20] Saldo disponible: 568.87
+[2025-05-12 12:21:20] Compra completada con éxito. ID compra: 13

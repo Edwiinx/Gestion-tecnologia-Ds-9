@@ -53,6 +53,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['id_producto'])) {
     <title>Calculos</title>
     <link rel="stylesheet" href="../../Css/estilo1.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<!-- SweetAlert2 CDN -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.19/dist/sweetalert2.min.js"></script>
+
 </head>
 
 <style>
@@ -163,73 +168,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['id_producto'])) {
         </div>
     </div>
 
-    <script>
-$(document).ready(function() {
-    // Abrir modal y cargar carrito
-    $('#carrito-icono').click(function () {
-        $("#modalCarrito").fadeIn();
-        actualizarCarrito();
-    });
+<script>
 
-    // Cerrar modal
-    $('.cerrar, .modal').click(function (e) {
-        if (e.target === this || $(e.target).hasClass('cerrar')) {
-            $("#modalCarrito").fadeOut();
-        }
-    });
-
-    // Función para actualizar carrito en modal
-    function actualizarCarrito() {
-        $.get('../../PhP/obtenerCarrito.php', function (data) {
-            $('#contenidoCarrito').html(data);
-            activarBotones();
-        });
-    }
-
-    // Funciones de aumentar, disminuir, eliminar en el modal
-    function activarBotones() {
-        $('.aumentar').click(function () {
-            let id = $(this).data('id');
-            modificarCantidad(id, 1);
-        });
-
-        $('.disminuir').click(function () {
-            let id = $(this).data('id');
-            modificarCantidad(id, -1);
-        });
-
-        $('.eliminar').click(function () {
-            let id = $(this).data('id');
-            eliminarProducto(id);
-        });
-    }
-
-    function modificarCantidad(id, delta) {
-        $.post('../../PhP/actualizarCantidad.php', { id: id, delta: delta }, function() {
-            actualizarCarrito();
-        });
-    }
-
-    function eliminarProducto(id) {
-        $.post('../../PhP/eliminarProducto.php', { id: id }, function() {
-            actualizarCarrito();
-        });
-    }
-
-    // Agregar productos al carrito
-    $('.agregar-carrito').click(function() {
-        let id = $(this).data('id');
-        $.post('../../PhP/agregarCarrito.php', { id: id }, function() {
-            actualizarCarrito();
-            alert('Producto agregado al carrito');
-        });
-    });
-});
 </script>
 
 <script>localStorage.setItem('ID_USUARIO', <?php echo json_encode($_SESSION['user']); ?>);</script>
+
 <script src="../../Js/Catalogo.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 </body>
 </html>

@@ -21,7 +21,7 @@ function log_debug($mensaje) {
 if (!isset($_SESSION['ID_USUARIO'])) {
     log_debug("Sesión no iniciada");
     http_response_code(403);
-    echo json_encode(['success' => false, 'message' => '...']);
+    echo json_encode(['success' => false, 'message' => 'Usuario no autenticado.']);
     exit;
 }
 
@@ -29,8 +29,9 @@ $id_usuario = $_SESSION['ID_USUARIO'];
 $numero_visa = $_POST['numero_visa'] ?? '';
 $fecha = $_POST['fecha'] ?? '';
 $cvv = $_POST['cvv'] ?? '';
+$total = $_POST['total'] ?? 0;  // Recibimos el total directamente desde el frontend
 
-log_debug("POST recibido: numero_visa=$numero_visa, fecha=$fecha, cvv=$cvv");
+log_debug("POST recibido: numero_visa=$numero_visa, fecha=$fecha, cvv=$cvv, total=$total");
 
 // Validar fecha
 $partes_fecha = explode('/', $fecha);
@@ -41,17 +42,7 @@ if (count($partes_fecha) != 2) {
 }
 $fecha_vencimiento = "20" . $partes_fecha[1] . "-" . $partes_fecha[0] . "-01";
 
-// Calcular total
-$query_total = $conn->prepare("SELECT SUM(TOTAL_PRECIO) * 1.07 AS TOTAL FROM CARRITO WHERE ID_USUARIO = ?");
-$query_total->bind_param("i", $id_usuario);
-$query_total->execute();
-$resultado = $query_total->get_result()->fetch_assoc();
-$total = floatval($resultado['TOTAL'] ?? 0);
-
-log_debug("Total con IVA calculado: $total");
-
-$query_total->close();
-
+// Validar si el total es mayor que 0
 if ($total <= 0) {
     log_debug("Total <= 0. Carrito vacío o error de suma.");
     echo json_encode(['success' => false, 'message' => 'No hay productos para pagar.']);
@@ -102,7 +93,6 @@ try {
     $insert_recibo->bind_param("iisss", $id_usuario, $id_compra, $total, $fecha_actual, $numero_visa);
     $insert_recibo->execute();
 
-
     // 4. Vaciar carrito
     $vaciar = $conn->prepare("DELETE FROM CARRITO WHERE ID_USUARIO = ?");
     $vaciar->bind_param("i", $id_usuario);
@@ -119,13 +109,4 @@ try {
     log_debug("Excepción: " . $mensajeError);
     echo json_encode(['success' => false, 'message' => 'Error al procesar el pago: ' . $mensajeError]);
 }
-
-
 ?>
-
-
-
-
-
-
-

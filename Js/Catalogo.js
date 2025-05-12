@@ -12,6 +12,20 @@ $(document).ready(function () {
         }
     });
 
+    function actualizarProductosPeriodicamente() {
+        setInterval(function () {
+            $.ajax({
+                url: '../../PhP/consultacarrito.php',
+                method: 'GET',
+                dataType: 'json',
+                success: function (data) {
+                    todosLosProductos = data;
+                    mostrarProductos(todosLosProductos);
+                }
+            });
+        }, 3000); // Actualiza cada 3 segundos
+    }    
+
     
 
     function mostrarProductos(productosFiltrados) {
@@ -52,6 +66,9 @@ $(document).ready(function () {
             $('.menu').append(contenedor);
         });
     }
+
+    actualizarProductosPeriodicamente();
+
 
     $(document).on('click', '.iconoCarrito', function () {
         $.ajax({
@@ -101,85 +118,173 @@ $(document).ready(function () {
     $('.icono7').click(() => mostrarProductos(todosLosProductos.filter(p => p.ID_CATEGORIA.toUpperCase() === 'COM')));
     $('.icono8').click(() => mostrarProductos(todosLosProductos.filter(p => p.ID_CATEGORIA.toUpperCase() === 'CAS')));
 
-    // Página del detalle del producto
-    const producto = JSON.parse(localStorage.getItem('productoDetalle'));
-    if (producto) {
-        $('#productoTitulo').text(producto.NOMBRE_PRODUCTO + " / " + producto.MODELO);
-        $('#productoImagen').attr('src', '../../../assets/' + producto.IMAGEN);
-        $('#productoPrecio').text('Precio: $' + producto.PRECIO_UNITARIO);
-        $('#productoEstado').text(producto.ESTADO);
-        $('#productoDescripcion').text('Descripción: ' + (producto.DESCRIPCION || 'Sin descripción disponible'));
+    // Página del detalle del producto 
+const producto = JSON.parse(localStorage.getItem('productoDetalle'));
 
-        let estado = document.getElementById("productoEstado");
-        let color = document.getElementById("colorEstado");
-        let botonCarrito = document.getElementById("btnAgregarCarrito");
+if (producto) {
+    // Asignar valores a los elementos del detalle
+    $('#productoTitulo').text(producto.NOMBRE_PRODUCTO + " / " + producto.MODELO);
+    $('#productoImagen').attr('src', '../../../assets/' + producto.IMAGEN);
+    $('#productoPrecio').text('Precio: $' + producto.PRECIO_UNITARIO);
+    $('#productoEstado').text(producto.ESTADO);
+    $('#productoDescripcion').text('Descripción: ' + (producto.DESCRIPCION || 'Sin descripción disponible'));
 
-        if (estado.textContent === "DISPONIBLE") {
-            color.style.backgroundColor = "green";
-        } else if (estado.textContent === "AGOTADO") {
-            color.style.backgroundColor = "red";
-            botonCarrito.disabled = true;
-        } else if (estado.textContent === "CASI AGOTADO") {
-            color.style.backgroundColor = "orange";
-        }
+    // Colores del estado
+    let estado = document.getElementById("productoEstado");
+    let color = document.getElementById("colorEstado");
+    let botonCarrito = document.getElementById("btnAgregarCarrito");
+    let inputCantidad = document.getElementById("quantity");
 
-        // Agregar al carrito
-        $('#btnAgregarCarrito').off('click').on('click', function () {
-            const idUsuario = localStorage.getItem('ID_USUARIO');
-            console.log("ID_USUARIO enviado:", idUsuario);  // Verificar el valor en consola
+    if (estado.textContent === "DISPONIBLE") {
+        color.style.backgroundColor = "green";
+        botonCarrito.disabled = false; // Aseguramos que esté habilitado
+    } else if (estado.textContent === "AGOTADO") {
+        color.style.backgroundColor = "red";
+        botonCarrito.disabled = true; // Deshabilitar el botón
+        inputCantidad.disabled = true; // Deshabilitar el campo de cantidad
+    } else if (estado.textContent === "CASI AGOTADO") {
+        color.style.backgroundColor = "orange";
+        botonCarrito.disabled = false; // Habilitar el botón si casi agotado
+        inputCantidad.disabled = false; // Permitir modificar la cantidad
+    }
 
-            if (!idUsuario) {
-                alert("Por favor, inicie sesión primero.");
-                return;
-            }
 
-            const cantidad = parseInt($('#quantity').val()) || 1;
-            if(cantidad <= 0) {
-                alert("La cantidad debe ser mayor a 0.");
-                return;
-            }
+    let productoID = new URLSearchParams(window.location.search).get('id'); // ID en la URL
+let estadoAnterior = null;
 
-            const precio = parseFloat(producto.PRECIO_UNITARIO);
-            const total = (cantidad * precio).toFixed(2);
+function verificarEstadoProducto() {
+    if (!productoID) return;
 
-            $.ajax({
-                url: '/Gestion-tecnologia-Ds-9/PhP/agregarCarrito.php',
-                method: 'POST',
-                data: {
-                    ID_USUARIO: idUsuario,
-                    ID_PRODUCTO: producto.ID_PRODUCTO,
-                    CANTIDAD: cantidad,
-                    TOTAL_PRECIO: total
-                },
-                success: function (response) {
-                    // Aquí podrías manejar si el producto ya estaba en el carrito y actualizar cantidad
-                    alert('Producto agregado al carrito.');
-                    console.log(response);
-                    // Opcional: actualizar el modal carrito si está abierto
-                    if($('#modalCarrito').is(':visible')) {
-                        $('.iconoCarrito').click(); // recargar contenido del carrito
-                    }
-                },
-                error: function (xhr, status, error) {
-                    alert('Error al agregar al carrito.');
-                    console.error(error);
+    $.ajax({
+        url: 'estadoProducto.php',
+        method: 'GET',
+        data: { id: productoID },
+        success: function (respuesta) {
+            try {
+                const data = JSON.parse(respuesta);
+                const nuevoEstado = data.ESTADO;
+                const cantidad = data.CANTIDAD;
+
+                // Si el estado cambió
+                if (estadoAnterior && nuevoEstado !== estadoAnterior) {
+                    Swal.fire({
+                        icon: 'info',
+                        title: '¡Estado actualizado!',
+                        text: `El producto ahora está: ${nuevoEstado}`,
+                        timer: 3000,
+                        toast: true,
+                        position: 'top-end',
+                        showConfirmButton: false
+                    });
                 }
-            });
+
+                estadoAnterior = nuevoEstado;
+
+                // Actualizar el DOM
+                $('#productoEstado').text(`Estado: ${nuevoEstado}`);
+                let color = '#ccc';
+                if (nuevoEstado === 'DISPONIBLE') color = 'green';
+                else if (nuevoEstado === 'CASI AGOTADO') color = 'orange';
+                else if (nuevoEstado === 'AGOTADO') color = 'red';
+                $('#colorEstado').css('background', color).css('width', '20px').css('height', '20px').css('border-radius', '50%');
+
+            } catch (error) {
+                console.error('Error al interpretar el estado:', error);
+            }
+        }
+    });
+}
+
+
+$('#btnAgregarCarrito').off('click').on('click', function () {
+    const cantidad = parseInt($('#quantity').val()) || 1;
+
+    if (cantidad <= 0) {
+        Swal.fire({
+            icon: 'error',
+            title: 'Cantidad inválida',
+            text: 'La cantidad debe ser mayor a 0.',
         });
+        return;
     }
 
-    // Funciones para botones + y -
-    window.decrease = function () {
-        let value = parseInt($('#quantity').val());
-        if (value > 1) $('#quantity').val(value - 1);
+    const existencias = producto.CANTIDAD;
+    if (cantidad > existencias) {
+        Swal.fire({
+            icon: 'error',
+            title: 'Cantidad excedida',
+            text: 'No hay suficientes existencias para esta cantidad.',
+        });
+        return;
     }
 
-    window.increase = function () {
-        let value = parseInt($('#quantity').val());
+    const precio = parseFloat(producto.PRECIO_UNITARIO);
+    const total = (cantidad * precio).toFixed(2);
+
+  $.ajax({
+    url: '/Gestion-tecnologia-Ds-9/PhP/agregarCarrito.php',
+    method: 'POST',
+    data: {
+        ID_USUARIO: idUsuario,
+        ID_PRODUCTO: producto.ID_PRODUCTO,
+        CANTIDAD: cantidad,
+        TOTAL_PRECIO: total
+    },
+    success: function (response) {
+        console.log("Respuesta de agregarCarrito:", response);
+        const data = JSON.parse(response);
+
+        // Si la respuesta es de error, mostrar el mensaje
+        if (data.error) {
+            Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: data.error,
+            });
+        } else {
+            // Si todo es correcto, actualizar estado y contador
+            verificarEstadoProducto();
+            actualizarContadorCarrito();
+
+            Swal.fire({
+                icon: 'success',
+                title: 'Producto agregado',
+                text: 'El producto se ha agregado correctamente al carrito.',
+            });
+        }
+    },
+    error: function (xhr, status, error) {
+        Swal.fire({
+            icon: 'error',
+            title: 'Error',
+            text: 'Error al agregar al carrito.',
+        });
+        console.error(error);
+    }
+});
+
+});
+}
+
+  // Función para disminuir la cantidad
+window.decrease = function () {
+    let value = parseInt($('#quantity').val());
+    if (value > 1) {
+        $('#quantity').val(value - 1);
+    }
+}
+
+// Función para aumentar la cantidad
+window.increase = function () {
+    let value = parseInt($('#quantity').val());
+    const maxQuantity = producto.CANTIDAD;  // Máxima cantidad disponible
+    if (value < maxQuantity) {
         $('#quantity').val(value + 1);
-    }
-
-    window.volverP = function () {
-        window.location.href = "../Catalogo/Catalogo.php";
-    }
+    } else {
+        Swal.fire({
+            icon: 'error',
+            title: 'Sin Disponibilidad',
+            text: `No puedes agregar más unidades.`,
+        });
+    }};
 });

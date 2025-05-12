@@ -64,10 +64,17 @@ $conn->close();
   <meta charset="UTF-8">
   <title>Carrito y Pago</title>
   <link rel="stylesheet" href="../../Css/DesignVisa.css">
+      <link rel="stylesheet" href="../../Css/estiloProducto.css"> <!-- Enlace al CSS -->
+
+
 </head>
 <body>
 
 <div class="container">
+  
+        <a href="../../Index/Catalogo/Catalogo.php" class="btn-regresar">⟵ Catálogo</a>
+
+   
   <!-- Pantalla del carrito -->
   <div id="carrito">
     <h3>Carrito de Compras</h3>
@@ -80,7 +87,11 @@ $conn->close();
           <img src="../../Assets/<?= htmlspecialchars($item['IMAGEN']) ?>" alt="<?= htmlspecialchars($item['NOMBRE_PRODUCTO']) ?>">
           <div class="item-details">
             <h4><?= htmlspecialchars($item['NOMBRE_PRODUCTO']) ?></h4>
-            <p data-precio-unitario="<?= htmlspecialchars($item['TOTAL_PRECIO'] / $item['CANTIDAD']) ?>"> Precio: $<span class="precio-total"><?= number_format($item['TOTAL_PRECIO'], 2) ?></span></p>         
+<p data-precio-unitario="<?= htmlspecialchars($item['TOTAL_PRECIO'] / $item['CANTIDAD']) ?>">
+  Precio unitario: $<?= number_format($item['TOTAL_PRECIO'] / $item['CANTIDAD'], 2) ?>
+  <span class="precio-total" style="display: none;"><?= number_format($item['TOTAL_PRECIO'], 2) ?></span>
+</p>
+
               <div class="qty-controls">
               <button onclick="cambiarCantidad(this, -1)">-</button>
               <span class="cantidad"><?= htmlspecialchars($item['CANTIDAD']) ?></span>
@@ -198,42 +209,57 @@ function volverAlCarrito() {
     document.getElementById("carrito").classList.remove("hidden");
 }
 
-function cambiarCantidad(btn, delta) {
-    const item = btn.closest(".item");
-    const idCarrito = item.dataset.id;
-    const cantidadElemento = item.querySelector(".cantidad");
-    const cantidadActual = parseInt(cantidadElemento.textContent);
-    const nuevaCantidad = Math.max(1, cantidadActual + delta);
+function cambiarCantidad(button, delta) {
+    // Buscar el contenedor del producto
+    const item = button.closest('.item');
+    
+    // Buscar el `span` donde se muestra la cantidad
+    const cantidadSpan = item.querySelector('.cantidad');
+    
+    // Obtener la cantidad actual y agregar el delta (aumento o disminución)
+    let cantidadActual = parseInt(cantidadSpan.textContent);
 
-    cantidadElemento.textContent = nuevaCantidad;
+    // Solo actualizar si la cantidad es mayor que 0 (no se puede tener cantidad negativa)
+    if (cantidadActual + delta >= 1) {
+        cantidadActual += delta;
+    }
 
+    // Actualizar la cantidad en el `span` visualmente
+    cantidadSpan.textContent = cantidadActual;
+
+    // Obtener el ID del producto para poder actualizarlo en la base de datos
+    const idProducto = item.getAttribute('data-id');
+
+    // Ahora actualizamos el precio total correspondiente a este producto
+    const precioUnitario = parseFloat(item.querySelector("[data-precio-unitario]").dataset.precioUnitario);
+    const nuevoPrecioTotal = cantidadActual * precioUnitario;
+
+    // Actualizar visualmente el precio total de ese producto
+    item.querySelector(".precio-total").textContent = nuevoPrecioTotal.toFixed(2);
+
+    // Enviar la nueva cantidad y el nuevo precio total al servidor con una solicitud AJAX
     fetch('../../PhP/actualizarCantidad.php', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: `id_carrito=${idCarrito}&delta=${delta}`
+        body: new URLSearchParams({
+            'nuevaCantidad': cantidadActual,
+            'id_producto': idProducto,
+            'nuevoPrecioTotal': nuevoPrecioTotal.toFixed(2) // Enviar el precio total actualizado
+        })
     })
-    .then(async response => {
-        const text = await response.text();
-        try {
-            const data = JSON.parse(text);
-            if (data.error) {
-                throw new Error(data.error);
-            }
-            actualizarTotales(); // Solo si todo va bien
-        } catch (e) {
-            console.error("Error al actualizar la cantidad:", e.message, "\nRespuesta:", text);
-            cantidadElemento.textContent = cantidadActual; // Restaurar cantidad
-            alert("Hubo un problema al actualizar la cantidad.");
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            console.log('Cantidad y precio total actualizados:', data.new_quantity, data.new_total);
+            // Después de actualizar la cantidad y el precio, recalcular los totales
+            actualizarTotales();
+        } else {
+            console.error('Error al actualizar cantidad y precio total:', data.error);
         }
     })
     .catch(error => {
-        console.error("Fallo de red o servidor:", error);
-        cantidadElemento.textContent = cantidadActual;
-        alert("No se pudo actualizar la cantidad.");
+        console.error('Error en la solicitud:', error);
     });
 }
-
-
 
 
 function eliminarProducto(idProducto) {
